@@ -42,25 +42,28 @@ public class Game {
     // här gör jag do while pga vi vet inte hur många ggr användare ska gissa, eventullet när hittar rätt nr
 
     do{
-        
-        if(gissning < siffra){
-            System.out.println("Talet är större! ");
-            System.out.println("Gissning nr. " + antalGissning++ );
-            gissning = scanner.nextInt();
+        try{
+            if(gissning < siffra){
+                System.out.println("Talet är större! ");
+                System.out.println("Gissning nr. " + antalGissning++ );
+                gissning = scanner.nextInt();
+            }else if (gissning > siffra){
+                System.out.println("Talet är mindre! ");
+                System.out.println("Gissning nr." + antalGissning++);
+                gissning = scanner.nextInt();
+                
+            }else if(gissning == siffra){
+                finalGissning = (antalGissning-1);
+                System.out.println("Du gissade rätt på " + finalGissning + " försök");
+                System.out.println();
+                m1.menu();
+                break;
             }
-        else if (gissning > siffra){
-            System.out.println("Talet är mindre! ");
-            System.out.println("Gissning nr." + antalGissning++);
-            gissning = scanner.nextInt();
-            }
-        else if(gissning == siffra){
-            finalGissning = (antalGissning-1);
-            System.out.println("Du gissade rätt på " + finalGissning + " försök");
-            System.out.println();
-            m1.menu();
-            break;
-
-            }
+        } catch (Exception e) {
+            System.out.println("Skriv endast nummer.");
+            scanner.nextLine();
+            scanner.nextInt();
+        }
           
         }while(true);
 
